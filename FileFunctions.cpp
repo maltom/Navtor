@@ -167,10 +167,6 @@ bool unpackRescuedFile(const std::filesystem::path& filePath)
         std::vector<char> buffer(siblingFileSize);
         rescuedFile.read(buffer.data(), siblingFileSize);
         siblingFile.write(buffer.data(), siblingFileSize);
-        if (siblingFileSize < 200)
-        {
-            std::cout << "File content: " << buffer.data() << "\n";
-        }
 
         ++rescuedFilesCount;
         siblingFile.close();
