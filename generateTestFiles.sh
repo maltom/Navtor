@@ -19,6 +19,7 @@ done
 echo $name
 }
 
+cd build/testFiles
 
 echo "${number[*]}"
 
@@ -41,3 +42,5 @@ for n in {1..100}; do
     echo $content > $finPath/$filename
     # dd if=/dev/urandom of=.$finPath bs=1 count=$(( RANDOM + 1024 ))
 done
+
+cd ../..
