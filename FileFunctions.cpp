@@ -55,11 +55,11 @@ void processSingleFile(const std::filesystem::path& filePath,
                        std::mutex& fileHashesMutex,
                        std::counting_semaphore<>& semaphore)
 {
-    utils::semaphore_lock_guard lock(semaphore);
+    utils::semaphore_lock_guard lockSem(semaphore);
     const auto fileHash = fileFunctions::calculateFileHash(filePath);
     if (fileHash.has_value())
     {
-        std::lock_guard<std::mutex> lock(fileHashesMutex);
+        std::lock_guard<std::mutex> lockMut(fileHashesMutex);
         uniqueFileHashes.insert(fileHash.value());
         fileAdresses.insert({fileHash.value(), filePath.string()});
     }
